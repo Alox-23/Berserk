@@ -1,0 +1,73 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "level1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "Forest Objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 3
+        },
+        "Objects.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "forest.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 3
+        },
+        "level1.tmx": {
+            "scale": 1,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 154,
+                "y": 23
+            }
+        },
+        "test1.tmx": {
+            "scale": 5.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 39.272727272727266,
+                "y": 34.18181818181818
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/akuzn/OneDrive/Documents/berserk/data/level1",
+    "last.imagePath": "C:/Users/akuzn/OneDrive/Documents/berserk/tiled",
+    "map.fixedSize": true,
+    "map.height": 5,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 5,
+    "openFiles": [
+        "forest.tsx",
+        "Forest Objects.tsx",
+        "level1.tmx"
+    ],
+    "project": "level1.tiled-project",
+    "recentFiles": [
+        "forest.tsx",
+        "Forest Objects.tsx",
+        "level1.tmx",
+        "Objects.tsx",
+        "test1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.type": 1
+}
