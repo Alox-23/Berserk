@@ -2,12 +2,16 @@ import pygame
 import os
 
 class Sprite(pygame.sprite.Sprite):
-    def __init__(self, *args) -> None:
+    def __init__(self, path, *args) -> None:
         super().__init__(*args)
-        self.load_animations_from_individual_sheet("data/assets/Player", 80)
+        self.load_animations_from_individual_sheet(path, 80)
         self.image = self.animations[self.animation_names[0]][0][0]
         self.rect = self.image.get_rect()
         self.rect.center = (50, 50)
+
+    def update(self, delta):
+        self.rect.x -= delta.x
+        self.rect.y -= delta.y
 
     def load_animations_from_individual_sheet(self, path, frame_size):
         self.create_animation_variables(path)        
@@ -63,3 +67,6 @@ class Sprite(pygame.sprite.Sprite):
                 self.animation_frame = 0
         except:
             self.animation_frame = 0
+
+    def draw(self, d):
+        d.blit(self.image, self.rect)

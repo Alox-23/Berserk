@@ -30,7 +30,7 @@ class Render():
         self.display.fill((0, 0, 0))
         
         self.game.tile_obj.draw(self.display)
-        self.game.player.draw(self.display)
+        self.game.game_obj.draw(self.display)
 
         self.screen.blit(pygame.transform.scale_by(self.display, self.scale), (0,0))
         #self.add_scanlines(self.screen)

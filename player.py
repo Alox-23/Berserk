@@ -4,7 +4,7 @@ import math
 
 class Player(sprite.Sprite):
     def __init__(self, game, pos = [0,0], *args) -> None:
-        super().__init__(*args)
+        super().__init__("data/assets/Player", *args)
         self.game = game
 
         self.speed = 0.35
@@ -15,7 +15,7 @@ class Player(sprite.Sprite):
         self.rect.center = (self.game.render.half_width, self.game.render.half_height)
         self.flip = False
 
-    def update(self):
+    def update(self, delta):
         self.movement()
         self.update_animation()
         self.update_action()
@@ -42,7 +42,6 @@ class Player(sprite.Sprite):
             self.flip = False
         else:
             self.action = "idle"
-        print(self.flip)
 
     def movement(self):
         self.movement_vector.x = 0

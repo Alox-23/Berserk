@@ -3,7 +3,9 @@ import player
 import world
 import render
 import tileObj
-
+import gameObj
+import human
+import random
 
 class Game:
     def __init__(self):
@@ -17,14 +19,18 @@ class Game:
         self.render = render.Render(self)
         self.player = player.Player(self)
         self.tile_obj = tileObj.TileObjects(self)
+        self.game_obj = gameObj.GameObjects(self, self.player)
         self.world = world.World(self)
-        
+
+        for i in range(100):
+            self.game_obj.add(human.Human((random.randint(50, 500), random.randint(50, 500))))
+            print(i)
 
         self.mainloop()
 
     def update(self):
         self.tile_obj.update()
-        self.player.update()
+        self.game_obj.update()
 
     def mainloop(self):
         running = True
