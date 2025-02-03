@@ -1,4 +1,4 @@
-import sprite
+import Sprites.sprite as sprite
 import pygame
 
 class Human(sprite.Sprite):

@@ -1,5 +1,5 @@
 import pygame
-import sprite
+import Sprites.sprite as sprite
 import math
 
 class Player(sprite.Sprite):

@@ -1,5 +1,5 @@
 import pygame
-import tile
+import Sprites.tile as tile
 import csv, sys, os
 
 class Level:

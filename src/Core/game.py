@@ -1,10 +1,10 @@
 import pygame
-import player
-import world
-import render
-import tileObj
-import gameObj
-import human
+import Sprites.player as player
+import Core.world as world
+import Core.render as render
+import Groups.tileObj as tileObj
+import Groups.gameObj as gameObj
+import Sprites.human as human
 import random
 
 class Game:

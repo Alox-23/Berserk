@@ -1,5 +1,5 @@
 import pygame
-import level
+import Core.level as level
 
 class World:
     def __init__(self, game) -> None:
