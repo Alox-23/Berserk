@@ -3,48 +3,46 @@ import Sprites.sprite as sprite
 import math
 
 class Player(sprite.Sprite):
-    def __init__(self, game, pos = [0,0], *args) -> None:
-        super().__init__("data/assets/Player", *args)
-        self.game = game
-
-        self.speed = 0.35
+    def __init__(self, game, pos = (0,0), *args) -> None:
+        super().__init__(game, "data/assets/Player", pos = pos, *args)
+        self.speed = 0.05
         self.movement_vector = pygame.math.Vector2(0, 0)
-        self.scroll = pygame.math.Vector2(pos[0], pos[1])
-        self.world_pos = pygame.math.Vector2(pos[0], pos[1])
+        self.scroll = pygame.math.Vector2(pos)
+        self.world_pos = pygame.math.Vector2(pos)
 
         self.rect.center = (self.game.render.half_width, self.game.render.half_height)
         self.flip = False
+        self.interaction = None
 
     def update(self, delta):
         self.movement()
-        self.rect.x -= delta.x
-        self.rect.y -= delta.y
+        self.update_rects(delta)
         self.update_animation()
         self.update_action()
 
     def draw(self, screen):
+        #pygame.draw.rect(screen, (255,0,0), self.coll_rect)
         screen.blit(pygame.transform.flip(self.image, self.flip, False), self.rect)
 
     def update_action(self):
         if self.movement_vector.x > 0:
-            self.action = "run"
+            self.action = "walk"
             self.animation_variant = 0
             self.flip = False
         elif self.movement_vector.x < 0:
-            self.action = "run"
+            self.action = "walk"
             self.animation_variant = 0
             self.flip = True
         elif self.movement_vector.y > 0:
-            self.action = "run"
+            self.action = "walk"
             self.animation_variant = 1
             self.flip = False
         elif self.movement_vector.y < 0:
-            self.action = "run"
+            self.action = "walk"
             self.animation_variant = 2
             self.flip = False
         else:
             self.action = "idle"
-
     def movement(self):
         self.movement_vector.x = 0
         self.movement_vector.y = 0

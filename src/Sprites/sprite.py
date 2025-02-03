@@ -2,16 +2,33 @@ import pygame
 import os
 
 class Sprite(pygame.sprite.Sprite):
-    def __init__(self, path, *args) -> None:
+    def __init__(self, game, path, pos = (50, 50), *args) -> None:
         super().__init__(*args)
+        self.game = game
         self.load_animations_from_individual_sheet(path, 80)
         self.image = self.animations[self.animation_names[0]][0][0]
         self.rect = self.image.get_rect()
-        self.rect.center = (50, 50)
+        self.rect.center = (pos[0], pos[1])
+        self.coll_rect = pygame.Rect(pos, (15, 15))
+        self.player_interaction = False
+
+    def check_interaction_player(self):
+        if self.coll_rect.colliderect(self.game.player.coll_rect):
+            self.game.player.interaction = self
+            return True
+        else:
+            if self.game.player.interaction == self:
+                self.game.player.interaction = None
+            return False
 
     def update(self, delta):
+        self.update_rects(delta)
+        self.check_interaction_player()
+
+    def update_rects(self, delta):
         self.rect.x -= delta.x
         self.rect.y -= delta.y
+        self.coll_rect.center = self.rect.center
 
     def load_animations_from_individual_sheet(self, path, frame_size):
         self.create_animation_variables(path)        
@@ -69,4 +86,8 @@ class Sprite(pygame.sprite.Sprite):
             self.animation_frame = 0
 
     def draw(self, d):
+        #pygame.draw.rect(d, (0,0,255), self.coll_rect)
         d.blit(self.image, self.rect)
+        if self.game.player.interaction == self:
+            pygame.draw.rect(d, (50,50,200), pygame.Rect(self.coll_rect.centerx-2, self.coll_rect.y-2, 4, 1))
+            

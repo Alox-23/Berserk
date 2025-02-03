@@ -1,4 +1,5 @@
 import pygame
+import Sprites.player as player
 
 class GameObjects(pygame.sprite.Group):
     def __init__(self, game, *args) -> None:
@@ -6,7 +7,7 @@ class GameObjects(pygame.sprite.Group):
         self.game = game
 
     def update(self):
-        for sprite in self.sprites():
+        for i, sprite in enumerate(self.sprites()):
             sprite.update(self.game.player.scroll)
 
     def draw(self, d):

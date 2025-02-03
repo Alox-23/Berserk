@@ -5,6 +5,7 @@ import Core.render as render
 import Groups.tileObj as tileObj
 import Groups.gameObj as gameObj
 import Sprites.human as human
+import Core.speachbox as speachbox
 import random
 
 class Game:
@@ -17,12 +18,14 @@ class Game:
         self.init_vars()
 
         self.render = render.Render(self)
+        self.speachbox = speachbox.Speachbox(self)
         self.player = player.Player(self)
         self.tile_obj = tileObj.TileObjects(self)
-        self.game_obj = gameObj.GameObjects(self, self.player)
+        self.game_obj = gameObj.GameObjects(self)
         self.world = world.World(self)
 
-        self.game_obj.add(human.Human((50, 50)))
+        self.game_obj.add(human.Human(self, (50, 50)), human.Human(self, (60, 50)), human.Human(self, (100, 50)))
+        self.game_obj.add( self.player)
 
         self.mainloop()
 
@@ -43,7 +46,6 @@ class Game:
             
             
             self.delta_time = self.clock.tick(self.fps)
-            self.delta_time /= 10
             self.update()
             self.render.render()
 

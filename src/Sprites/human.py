@@ -2,8 +2,8 @@ import Sprites.sprite as sprite
 import pygame
 
 class Human(sprite.Sprite):
-    def __init__(self, pos, *args):
-        super().__init__("data/assets/Human", *args)
+    def __init__(self, game, pos, *args):
+        super().__init__(game, "data/assets/Human", pos = pos, *args)
         self.rect.center = pos
         self.action = "idle"
     
