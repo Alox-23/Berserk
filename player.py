@@ -17,6 +17,8 @@ class Player(sprite.Sprite):
 
     def update(self, delta):
         self.movement()
+        self.rect.x -= delta.x
+        self.rect.y -= delta.y
         self.update_animation()
         self.update_action()
 
@@ -78,5 +80,3 @@ class Player(sprite.Sprite):
             self.scroll.x = self.movement_vector.x
         else:
             self.scroll.x = 0
-
-        self.rect.center -= self.scroll

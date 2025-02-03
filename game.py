@@ -22,9 +22,7 @@ class Game:
         self.game_obj = gameObj.GameObjects(self, self.player)
         self.world = world.World(self)
 
-        for i in range(100):
-            self.game_obj.add(human.Human((random.randint(50, 500), random.randint(50, 500))))
-            print(i)
+        self.game_obj.add(human.Human((50, 50)))
 
         self.mainloop()
 
@@ -38,6 +36,11 @@ class Game:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
+            
             
             self.delta_time = self.clock.tick(self.fps)
             self.delta_time /= 10

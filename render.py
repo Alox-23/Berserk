@@ -4,12 +4,12 @@ import random
 class Render():
     def __init__(self, game,) -> None:
         self.game = game
-        self.width, self.half_width = 200, 100
-        self.height, self.half_height = 125, 62.5
+        self.width, self.half_width = 192, 96
+        self.height, self.half_height = 108, 54
         self.display_res = (self.width, self.height)
         self.scale = 5
         self.display = pygame.Surface(self.display_res)
-        self.screen = pygame.display.set_mode((self.display_res[0]*self.scale, self.display_res[1]*self.scale))
+        self.screen = pygame.display.set_mode((self.display_res[0]*self.scale, self.display_res[1]*self.scale), pygame.RESIZABLE)
 
     def add_scanlines(self, d):
         scanline_buffer = pygame.Surface((d.get_width(), d.get_height()))
@@ -32,7 +32,7 @@ class Render():
         self.game.tile_obj.draw(self.display)
         self.game.game_obj.draw(self.display)
 
-        self.screen.blit(pygame.transform.scale_by(self.display, self.scale), (0,0))
+        self.screen.blit(pygame.transform.scale(self.display, (self.screen.get_width(), self.screen.get_height())), (0,0))
         #self.add_scanlines(self.screen)
 
         pygame.display.update()
