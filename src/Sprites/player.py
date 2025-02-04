@@ -19,7 +19,7 @@ class Player(sprite.Sprite):
         if self.interaction != None:
             for event in self.game.events:
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_RETURN:
+                    if event.key == pygame.K_RETURN and self.game.speachbox.queue == []:
                         self.interaction.say("Hello traveler\nWhats your name?", "Greatings [NAME]", f"My name is\n{self.interaction.name}")
         self.update_rects(delta)
         self.update_animation()

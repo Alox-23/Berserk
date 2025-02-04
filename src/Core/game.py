@@ -6,6 +6,7 @@ import Groups.tileObj as tileObj
 import Groups.gameObj as gameObj
 import Sprites.human as human
 import Core.speachbox as speachbox
+import Core.speachboxbit as speachboxbit
 import random
 
 class Game:
@@ -18,7 +19,7 @@ class Game:
         self.init_vars()
 
         self.render = render.Render(self)
-        self.speachbox = speachbox.Speachbox(self)
+        self.speachbox = speachboxbit.SpeachboxBit(self)
         self.player = player.Player(self)
         self.tile_obj = tileObj.TileObjects(self)
         self.game_obj = gameObj.GameObjects(self)
