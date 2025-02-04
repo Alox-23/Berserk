@@ -5,12 +5,17 @@ class Sprite(pygame.sprite.Sprite):
     def __init__(self, game, path, pos = (50, 50), *args) -> None:
         super().__init__(*args)
         self.game = game
+
         self.load_animations_from_individual_sheet(path, 80)
         self.image = self.animations[self.animation_names[0]][0][0]
+        self.c_image = pygame.image.load("data/assets/player.png")
         self.rect = self.image.get_rect()
         self.rect.center = (pos[0], pos[1])
+
         self.coll_rect = pygame.Rect(pos, (15, 15))
+
         self.player_interaction = False
+        self.name = "sprite"
 
     def check_interaction_player(self):
         if self.coll_rect.colliderect(self.game.player.coll_rect):
@@ -24,6 +29,9 @@ class Sprite(pygame.sprite.Sprite):
     def update(self, delta):
         self.update_rects(delta)
         self.check_interaction_player()
+
+    def say(self, *phrases):
+        self.game.speachbox.queue.append([[*phrases], self.c_image])
 
     def update_rects(self, delta):
         self.rect.x -= delta.x

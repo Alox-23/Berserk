@@ -16,6 +16,11 @@ class Player(sprite.Sprite):
 
     def update(self, delta):
         self.movement()
+        if self.interaction != None:
+            for event in self.game.events:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN:
+                        self.interaction.say("Hello traveler\nWhats your name?", "Greatings [NAME]", f"My name is\n{self.interaction.name}")
         self.update_rects(delta)
         self.update_animation()
         self.update_action()
@@ -47,15 +52,13 @@ class Player(sprite.Sprite):
         self.movement_vector.x = 0
         self.movement_vector.y = 0
 
-        keys = pygame.key.get_pressed()
-
-        if keys[pygame.K_w]:
+        if self.game.keys[pygame.K_w]:
             self.movement_vector.y = -1
-        if keys[pygame.K_a]:
+        if self.game.keys[pygame.K_a]:
             self.movement_vector.x = -1
-        if keys[pygame.K_s]:
+        if self.game.keys[pygame.K_s]:
             self.movement_vector.y = 1
-        if keys[pygame.K_d]:
+        if self.game.keys[pygame.K_d]:
             self.movement_vector.x = 1
 
         #apply speed

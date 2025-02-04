@@ -32,8 +32,6 @@ class Render():
         self.game.tile_obj.draw(self.display)
         self.game.game_obj.draw(self.display)
 
-        
-
         self.screen.blit(pygame.transform.scale(self.display, (self.screen.get_width(), self.screen.get_height())), (0,0))
         #self.add_scanlines(self.screen)
         self.game.speachbox.draw(self.screen)

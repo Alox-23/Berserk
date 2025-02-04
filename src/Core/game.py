@@ -30,13 +30,16 @@ class Game:
         self.mainloop()
 
     def update(self):
+        self.keys = pygame.key.get_pressed()
+        self.speachbox.update()
         self.tile_obj.update()
         self.game_obj.update()
 
     def mainloop(self):
         running = True
         while running:
-            for event in pygame.event.get():
+            self.events = pygame.event.get()
+            for event in self.events:
                 if event.type == pygame.QUIT:
                     running = False
 
@@ -50,6 +53,7 @@ class Game:
             self.render.render()
 
     def init_vars(self):
+        self.keys = pygame.key.get_pressed()
         self.clock = pygame.time.Clock()
         self.fps = 60
         self.delta_time = 0
